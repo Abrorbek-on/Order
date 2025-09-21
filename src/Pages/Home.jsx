@@ -91,7 +91,7 @@ function Home() {
                     <img
                         src="assets/Untitled-2 1 (1).png"
                         alt="girl eating pizza"
-                        className="w-[300px] h-[400px] relative z-10 mr-[600px] mt-[52px]"
+                        className="w-[300px] h-[400px] relative  mr-[700px] mt-[52px]"
                     />
 
                     <div className="absolute top-0 right-0 w-[626px] h-[470px] rounded-tl-[200px] -z-10 bg-amber-600" >
