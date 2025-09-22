@@ -245,21 +245,32 @@ function Home() {
                             <strong>Download the Order.uk app for faster ordering</strong>
                         </p>
 
-                        <div className="flex gap-4 mt-2">
-                            <a href="#">
-                                <img
-                                    src="assets/appstore.png"
-                                    alt="Download on the App Store"
-                                    className="h-[40px] sm:h-[50px]"
-                                />
-                            </a>
-                            <a href="#">
-                                <img
-                                    src="assets/googleplay.png"
-                                    alt="Get it on Google Play"
-                                    className="h-[40px] sm:h-[50px]"
-                                />
-                            </a>
+                        <div>
+                            <Stack direction="row" spacing={2} alignItems="center">
+                                <Button
+                                    variant="contained"
+                                    startIcon={<AppleIcon />}
+                                    href="https://apps.apple.com/app/your-app-id"
+                                    target="_blank"
+                                    sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
+                                >
+                                    <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
+                                        App Store
+                                    </span>
+                                </Button>
+
+                                <Button
+                                    variant="contained"
+                                    startIcon={<AndroidIcon />}
+                                    href="https://play.google.com/store/apps/details?id=your.package.name"
+                                    target="_blank"
+                                    sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
+                                >
+                                    <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
+                                        Google Play
+                                    </span>
+                                </Button>
+                            </Stack>
                         </div>
                     </div>
                 </div>
@@ -395,31 +406,33 @@ function Home() {
                         <div className="text-2xl font-bold">
                             <img src="assets/LOGO 1.png" alt="Order.UK Logo" />
                         </div>
-                        <Stack direction="row" spacing={2} alignItems="center">
-                            <Button
-                                variant="contained"
-                                startIcon={<AppleIcon />}
-                                href="https://apps.apple.com/app/your-app-id"
-                                target="_blank"
-                                sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
-                            >
-                                <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
-                                    App Store
-                                </span>
-                            </Button>
+                        <div className="mt-[20px]">
+                            <Stack direction="row" spacing={2} alignItems="center">
+                                <Button
+                                    variant="contained"
+                                    startIcon={<AppleIcon />}
+                                    href="https://apps.apple.com/app/your-app-id"
+                                    target="_blank"
+                                    sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
+                                >
+                                    <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
+                                        App Store
+                                    </span>
+                                </Button>
 
-                            <Button
-                                variant="contained"
-                                startIcon={<AndroidIcon />}
-                                href="https://play.google.com/store/apps/details?id=your.package.name"
-                                target="_blank"
-                                sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
-                            >
-                                <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
-                                    Google Play
-                                </span>
-                            </Button>
-                        </Stack>
+                                <Button
+                                    variant="contained"
+                                    startIcon={<AndroidIcon />}
+                                    href="https://play.google.com/store/apps/details?id=your.package.name"
+                                    target="_blank"
+                                    sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
+                                >
+                                    <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
+                                        Google Play
+                                    </span>
+                                </Button>
+                            </Stack>
+                        </div>
                         <p className="text-sm mt-3 text-gray-600 max-w-[300px]">
                             Company # 490038-445, Registered with House of companies.
                         </p>
