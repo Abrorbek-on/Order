@@ -2,12 +2,17 @@ import React from "react";
 import Navbar from "../Components/Header";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import { FaFacebook, FaInstagram, FaTiktok, FaSnapchat, FaTwitter } from "react-icons/fa";
-
+import { FaFacebook, FaInstagram, FaTiktok, FaSnapchat, FaTwitter, FaTelegram } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { BsYoutube } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { TfiEmail } from "react-icons/tfi";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import AppleIcon from "@mui/icons-material/Apple";
+import AndroidIcon from "@mui/icons-material/Android";
 
 
 function Home() {
@@ -390,18 +395,31 @@ function Home() {
                         <div className="text-2xl font-bold">
                             <img src="assets/LOGO 1.png" alt="Order.UK Logo" />
                         </div>
-                        <div className="flex gap-3 mt-4 flex-wrap">
-                            <img
-                                src="/assets/appstore.png"
-                                alt="App Store"
-                                className="w-[120px] h-auto"
-                            />
-                            <img
-                                src="/assets/googleplay.png"
-                                alt="Google Play"
-                                className="w-[120px] h-auto"
-                            />
-                        </div>
+                        <Stack direction="row" spacing={2} alignItems="center">
+                            <Button
+                                variant="contained"
+                                startIcon={<AppleIcon />}
+                                href="https://apps.apple.com/app/your-app-id"
+                                target="_blank"
+                                sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
+                            >
+                                <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
+                                    App Store
+                                </span>
+                            </Button>
+
+                            <Button
+                                variant="contained"
+                                startIcon={<AndroidIcon />}
+                                href="https://play.google.com/store/apps/details?id=your.package.name"
+                                target="_blank"
+                                sx={{ width: 120, justifyContent: "flex-start", p: 1 }}
+                            >
+                                <span style={{ fontSize: 12, textTransform: "none", marginLeft: 6 }}>
+                                    Google Play
+                                </span>
+                            </Button>
+                        </Stack>
                         <p className="text-sm mt-3 text-gray-600 max-w-[300px]">
                             Company # 490038-445, Registered with House of companies.
                         </p>
@@ -409,6 +427,7 @@ function Home() {
 
                     <div>
                         <h3 className="font-semibold mb-3">Get Exclusive Deals in your Inbox</h3>
+
                         <div className="flex gap-2 flex-wrap">
                             <input
                                 type="email"
@@ -419,6 +438,7 @@ function Home() {
                                 Subscribe
                             </button>
                         </div>
+
                         <p className="text-xs text-gray-500 mt-2 max-w-[300px]">
                             we won’t spam, read our{" "}
                             <a href="#" className="underline">
@@ -427,13 +447,45 @@ function Home() {
                         </p>
 
                         <div className="flex gap-4 mt-4 text-xl text-gray-600 flex-wrap">
-                            <a href="#" aria-label="YouTube"><BsYoutube /></a>
-                            <a href="#" aria-label="Instagram"><FaInstagram /></a>
-                            <a href="#" aria-label="TikTok"><FaTiktok /></a>
-                            <a href="#" aria-label="Snapchat"><FaSnapchat /></a>
-                            <a href="#" aria-label="Twitter"><FaTwitter /></a>
+                            <a
+                                href="https://www.youtube.com/@abrorbekkarimov1"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="YouTube"
+                            >
+                                <BsYoutube />
+                            </a>
+
+                            <a
+                                href="https://www.instagram.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram"
+                            >
+                                <FaInstagram />
+                            </a>
+
+                            <a
+                                href="https://www.linkedin.com/feed/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="LinkedIn"
+                            >
+                                <FaLinkedinIn />
+                            </a>
+
+                            <a
+                                href="https://t.me/ka0o9"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Telegram"
+                            >
+                                <FaTelegram />
+                            </a>
+
                         </div>
                     </div>
+
 
                     <div>
                         <h3 className="font-semibold mb-3">Legal Pages</h3>
