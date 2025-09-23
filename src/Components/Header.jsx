@@ -45,7 +45,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden lg:flex items-center gap-6 text-gray-700 font-medium">
-                    <Link to="/" className="text-orange-500 hover:text-orange-600">
+                    <Link to="/" className="hover:text-orange-600">
                         Home
                     </Link>
                     <Link to="/menu" className="hover:text-orange-500">
