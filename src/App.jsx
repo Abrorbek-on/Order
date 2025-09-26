@@ -4,6 +4,7 @@ import Restaurants from "./Pages/Restaurants";
 import Register from "./Pages/Register";
 import Send from "./Pages/Send";
 import LoginForm from "./Pages/Login";
+import Verify from "./Pages/Verify";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/send" element={<Send />} />
+        <Route path="/verify" element={<Verify />} />
       </Routes>
     </BrowserRouter>
   );

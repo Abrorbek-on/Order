@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Mail, Lock } from "lucide-react";
 
 export default function LoginForm() {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function LoginForm() {
     });
 
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -24,59 +26,78 @@ export default function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
+        setLoading(true);
 
         try {
-            const { data } = await axios.post("http://localhost:3000/auth/login", {
+            const { data } = await axios.post("http://localhost:5000/auth/login", {
                 email: formData.email,
                 password: formData.password,
             });
 
-            if (data?.token?.accessToken) {
-                localStorage.setItem("token", data.token.accessToken);
-                localStorage.setItem("refreshToken", data.token.refreshToken);
+            if (data?.accessToken) {
+                localStorage.setItem("token", data.accessToken);
+                localStorage.setItem("refreshToken", data.refreshToken);
 
                 if (data.user) {
                     localStorage.setItem("user", JSON.stringify(data.user));
                 }
 
-                navigate("/home");
+                navigate("/");
             } else {
                 navigate("/register");
             }
         } catch (err) {
             setError("Login yoki parol xato!");
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <>
-           
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-orange-100 via-rose-100 to-red-100 p-6">
+            <div className="max-w-md w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-orange-200">
+                <div className="bg-gradient-to-r from-orange-400 to-red-400 p-6 text-white">
+                    <div className="flex items-center gap-3">
+                        <div className="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-2xl">
+                            🔑
+                        </div>
+                        <div>
+                            <h2 className="text-2xl font-bold">Login</h2>
+                            <p className="text-sm opacity-90">Hisobingizga kiring</p>
+                        </div>
+                    </div>
+                </div>
 
-            <div className="flex justify-center mt-[100px]">
-                <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
-                    <h2 className="text-lg font-semibold mb-4">Sign in</h2>
+                <div className="p-6">
+                    {error && <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg">{error}</div>}
+
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium mb-1">Email</label>
+                            <label className="flex items-center gap-2 text-sm text-gray-700">
+                                <Mail size={16} /> Email
+                            </label>
                             <input
                                 type="email"
                                 name="email"
-                                placeholder="email@example.com"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="w-full border-b outline-none py-2"
+                                placeholder="siz@example.com"
+                                className="mt-2 w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 outline-none"
                                 required
                             />
                         </div>
+
                         <div>
-                            <label className="block text-sm font-medium mb-1">Password</label>
+                            <label className="flex items-center gap-2 text-sm text-gray-700">
+                                <Lock size={16} /> Parol
+                            </label>
                             <input
                                 type="password"
                                 name="password"
-                                placeholder="Password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="w-full border-b outline-none py-2"
+                                placeholder="Parol kiriting"
+                                className="mt-2 w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-orange-400 outline-none"
                                 required
                             />
                         </div>
@@ -97,18 +118,27 @@ export default function LoginForm() {
                             </a>
                         </div>
 
-                        {error && <p className="text-red-500 text-sm">{error}</p>}
-
                         <button
                             type="submit"
-                            className="w-full bg-blue-600 text-white py-2 rounded mt-2 hover:bg-blue-700 transition"
+                            disabled={loading}
+                            className="w-full flex justify-center items-center bg-gradient-to-r from-orange-400 to-red-400 hover:from-orange-500 hover:to-red-500 text-white py-2 rounded-lg font-semibold shadow-md transition disabled:opacity-50"
                         >
-                            Login
+                            {loading ? "Yuklanmoqda..." : "Login"}
                         </button>
                     </form>
-                    <Link to="/register" className='text-blue-500 flex justify-center mt-[10px]'>Register</Link>
+
+                    <div className="mt-4 text-center text-sm">
+                        <span>Hisobingiz yo‘qmi? </span>
+                        <Link to="/register" className="text-orange-600 hover:underline font-medium">
+                            Ro‘yxatdan o‘tish
+                        </Link>
+                    </div>
+                </div>
+
+                <div className="bg-orange-50 px-6 py-4 border-t border-orange-100 text-sm text-gray-600 text-center">
+                    <span className="font-medium">🍽️ Taomlar ilovasi</span> — Bon Appétit!
                 </div>
             </div>
-        </>
+        </div>
     );
 }
